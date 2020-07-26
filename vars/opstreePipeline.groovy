@@ -1,11 +1,12 @@
-def call() {
+
 pipeline {
     agent any  
            stage('Checkout') {
             checkout scm
         }
-
+def call() {
          def p = pipelineConfig()
+ }
 
         stages('Prerequistes'){
             serviceName = sh (
@@ -20,4 +21,3 @@ pipeline {
         }
      }
 } 
-}
