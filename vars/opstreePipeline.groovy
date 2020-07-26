@@ -19,4 +19,5 @@ pipeline {
                 sh "mvn -Ddb_port=${p.DB_PORT} -Dredis_port=${p.REDIS_PORT} clean install"
         }
      }
-} // pipeline
+} 
+}
