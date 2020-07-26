@@ -1,5 +1,7 @@
 def call() {
-    node('Slave1') {
+    pipeline {
+    agent any  
+        {
 
         stage('Checkout') {
             checkout scm
@@ -30,6 +32,7 @@ def call() {
             echo "We are going to deploy ${p.SERVICE_NAME}"
             sh "kubectl set image deployment/${p.SERVICE_NAME} ${p.SERVICE_NAME}=opstree/${p.SERVICE_NAME}:${BUILD_NUMBER} "
             sh "kubectl rollout status deployment/${p.SERVICE_NAME} -n ${p.ENVIRONMENT_NAME} "
-
+        }
+} 
     }
 }
